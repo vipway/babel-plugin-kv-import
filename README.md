@@ -10,7 +10,7 @@ Modular import plugin for kv-design
 
 #### `{ "libraryName": "kv-design" }`
 
-````javascript
+```javascript
 import { Button } from 'kv-design';
 ReactDOM.render(<Button label="xxxx" />);
 
@@ -18,6 +18,7 @@ ReactDOM.render(<Button label="xxxx" />);
 
 var _button = require('kv-design/lib/button');
 ReactDOM.render(<_button label="xxxx" />);
+```
 
 ## Usage
 
@@ -37,44 +38,45 @@ Via `.babelrc` or babel-loader.
 
 `options` can be an object:
 
-- libraryName `string` (require)
+* libraryName `string` (require)
 
-- style `boolean | 'less' | function`
+* style `boolean | 'less' | function`
 
   default `false`
-- libraryDirectory `string`
+
+* libraryDirectory `string`
 
   default `'lib'`
-- customName `function`
+
+* customName `function`
 
 For Example:
 
 ```javascript
 [
   {
-    "libraryName": "kv-design",
-    "libraryDirectory": "lib",
-    "style": true
+    libraryName: 'kv-design',
+    libraryDirectory: 'lib',
+    style: true
   },
   {
-    "libraryName": "kv-ui-core",
-     "libraryDirectory": "lib"
-  },
-]
+    libraryName: 'kv-ui-core',
+    libraryDirectory: 'lib'
+  }
+];
 ```
 
-```style
+### style
 
-- `["import", { "libraryName": "kv-design" }]`: import js modularly
-- `["import", { "libraryName": "kv-design", "style": true }]`: import js and css modularly
-- `["import", { "libraryName": "kv-design", "style": "less" }]`: import js and less modularly
-```
-
-e.g.
-- `["import", { "libraryName": "kv-design", "style": (name) => `${name}/style/2x` }]`: import js and css modularly & css file path is `ComponentName/style/2x`
+* `["import", { "libraryName": "kv-design" }]`: import js modularly
+* `["import", { "libraryName": "kv-design", "style": true }]`: import js and css modularly
+* `["import", { "libraryName": "kv-design", "style": "less" }]`: import js and less modularly
 
 ### Note
 
 If option style is a `Function`, `babel-plugin-kv-import` will auto import the file which filepath equal to the function return value.
 babel-plugin-kv-import will not work properly if you add the library to the webpack config [vendor].
-````
+
+```
+
+```

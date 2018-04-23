@@ -30,7 +30,7 @@ Via `.babelrc` or babel-loader.
 
 ```js
 {
-  "plugins": [["import", options]]
+  "plugins": [["kv-import", options]]
 }
 ```
 
@@ -76,7 +76,3 @@ For Example:
 
 If option style is a `Function`, `babel-plugin-kv-import` will auto import the file which filepath equal to the function return value.
 babel-plugin-kv-import will not work properly if you add the library to the webpack config [vendor].
-
-```
-
-```

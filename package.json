@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-kv-import",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Load on demand kv-design",
   "main": "lib/index.js",
   "repository": "https://github.com/vipway/babel-plugin-kv-import.git",

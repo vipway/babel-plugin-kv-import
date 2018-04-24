@@ -50,6 +50,15 @@ function buildImportReplacement(specifier, types, state) {
   const localName = specifier.local.name;
   const replacement = [];
   let replacePath = winPath(join(opts.libraryName, opts.libraryDirectory, importedName.toLowerCase()));
+  if (opts.deleteImportNameContent) {
+    replacePath = winPath(
+      join(
+        opts.libraryName,
+        opts.libraryDirectory,
+        importedName.replace(eval('/' + opts.deleteImportNameContent + '$/'), '').toLowerCase()
+      )
+    );
+  }
   if (opts.customName) {
     if (typeof opts.customName === 'function') {
       replacePath = winPath(opts.customName(importedName));
@@ -92,7 +101,7 @@ function initOptionNecessary(state) {
       }
       Object.assign(opts[index], {
         libraryDirectory: o.libraryDirectory || 'lib',
-        style: o.style === undefined ? true : o.style
+        style: checkValue(opts.style) ? true : o.style
       });
     });
   } else {
@@ -101,7 +110,7 @@ function initOptionNecessary(state) {
     }
     Object.assign(opts, {
       libraryDirectory: opts.libraryDirectory || 'lib',
-      style: opts.style === undefined ? true : opts.style
+      style: checkValue(opts.style) ? true : opts.style
     });
   }
 }

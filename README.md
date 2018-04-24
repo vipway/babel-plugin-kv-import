@@ -36,8 +36,6 @@ Via `.babelrc` or babel-loader.
 
 ### options
 
-`options` can be an object:
-
 * libraryName `string` (require)
 
 * style `boolean | 'less' | function`
@@ -50,7 +48,22 @@ Via `.babelrc` or babel-loader.
 
 * customName `function`
 
-For Example:
+* deleteImportNameContent `string`
+
+Import name based on `deleteImportNameContent` delete path.
+
+
+`options` can be an object:
+
+```javascript
+{
+    libraryName: 'kv-design',
+    libraryDirectory: 'lib',
+    style: true
+},
+```
+
+`options` can be an array.
 
 ```javascript
 [
@@ -75,4 +88,4 @@ For Example:
 ### Note
 
 If option style is a `Function`, `babel-plugin-kv-import` will auto import the file which filepath equal to the function return value.
-babel-plugin-kv-import will not work properly if you add the library to the webpack config [vendor].
+`babel-plugin-kv-import` will not work properly if you add the library to the webpack config [vendor].

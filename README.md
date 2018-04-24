@@ -52,7 +52,6 @@ Via `.babelrc` or babel-loader.
 
 Import name based on `deleteImportNameContent` delete path.
 
-
 `options` can be an object:
 
 ```javascript

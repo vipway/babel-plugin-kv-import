@@ -78,11 +78,11 @@ function buildImportReplacement(specifier, types, state) {
   // style
   if (opts.style === true) {
     replacement.push(
-      types.importDeclaration([], types.stringLiteral(join(replacePath, `${importedName.toLowerCase()}.css`)))
+      types.importDeclaration([], types.stringLiteral(winPath(`${replacePath}/${importedName.toLowerCase()}.css`)))
     );
   } else if (opts.style === 'less') {
     replacement.push(
-      types.importDeclaration([], types.stringLiteral(winPath(join(replacePath, `${importedName.toLowerCase()}.less`))))
+      types.importDeclaration([], types.stringLiteral(winPath(`${replacePath}/${importedName.toLowerCase()}.less`)))
     );
   } else if (typeof opts.style === 'function') {
     types.importDeclaration([], types.stringLiteral(winPath(opts.style(importedName))));
@@ -101,7 +101,7 @@ function initOptionNecessary(state) {
       }
       Object.assign(opts[index], {
         libraryDirectory: o.libraryDirectory || 'lib',
-        style: checkValue(opts.style) ? true : o.style
+        style: checkValue(opts.style) ? false : o.style
       });
     });
   } else {
@@ -110,7 +110,7 @@ function initOptionNecessary(state) {
     }
     Object.assign(opts, {
       libraryDirectory: opts.libraryDirectory || 'lib',
-      style: checkValue(opts.style) ? true : opts.style
+      style: checkValue(opts.style) ? false : o.style
     });
   }
 }

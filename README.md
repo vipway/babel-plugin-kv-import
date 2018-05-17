@@ -38,7 +38,7 @@ Via `.babelrc` or babel-loader.
 
 * libraryName `string` (require)
 
-* style `boolean | 'less' | function`
+* style `boolean | css | 'less' | function`
 
   default `false`
 
@@ -81,7 +81,7 @@ Import name based on `deleteImportNameContent` delete path.
 ### style
 
 * `["import", { "libraryName": "kv-design" }]`: import js modularly
-* `["import", { "libraryName": "kv-design", "style": true }]`: import js and css modularly
+* `["import", { "libraryName": "kv-design", "style": "css" }]`: import js and css modularly
 * `["import", { "libraryName": "kv-design", "style": "less" }]`: import js and less modularly
 
 ### Note

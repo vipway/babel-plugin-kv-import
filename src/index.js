@@ -1,4 +1,5 @@
 import { join } from 'path';
+
 module.exports = function(babel) {
   const { types } = babel;
   return {
@@ -76,18 +77,13 @@ function buildImportReplacement(specifier, types, state) {
   );
 
   // style
-  if (opts.style === true) {
-    replacement.push(
-      types.importDeclaration([], types.stringLiteral(winPath(`${replacePath}/${importedName.toLowerCase()}.css`)))
-    );
+  if (opts.style === 'css') {
+    replacement.push(types.importDeclaration([], types.stringLiteral(winPath(`${replacePath}/css.js`))));
   } else if (opts.style === 'less') {
-    replacement.push(
-      types.importDeclaration([], types.stringLiteral(winPath(`${replacePath}/${importedName.toLowerCase()}.less`)))
-    );
+    replacement.push(types.importDeclaration([], types.stringLiteral(winPath(`${replacePath}/style.js`))));
   } else if (typeof opts.style === 'function') {
     types.importDeclaration([], types.stringLiteral(winPath(opts.style(importedName))));
   }
-
   return replacement;
 }
 
@@ -96,12 +92,12 @@ function initOptionNecessary(state) {
   let { opts } = state;
   if (Array.isArray(opts)) {
     opts.forEach((o, index) => {
-      if (checkValue(opts.libraryName)) {
+      if (checkValue(o.libraryName)) {
         throw new Error('libraryName should be provided');
       }
       Object.assign(opts[index], {
         libraryDirectory: o.libraryDirectory || 'lib',
-        style: checkValue(opts.style) ? false : o.style
+        style: checkValue(o.style) ? false : o.style
       });
     });
   } else {
@@ -110,7 +106,7 @@ function initOptionNecessary(state) {
     }
     Object.assign(opts, {
       libraryDirectory: opts.libraryDirectory || 'lib',
-      style: checkValue(opts.style) ? false : o.style
+      style: checkValue(opts.style) ? false : opts.style
     });
   }
 }

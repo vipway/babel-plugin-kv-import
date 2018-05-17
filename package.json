@@ -1,13 +1,13 @@
 {
   "name": "babel-plugin-kv-import",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Load on demand kv-design",
   "main": "lib/index.js",
   "repository": "https://github.com/vipway/babel-plugin-kv-import.git",
   "author": "jiawei.mao",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf lib && babel src --out-dir lib",
+    "build": "rimraf lib && babel src --out-dir lib",
     "test": "./scripts/test.sh"
   },
   "dependencies": {
@@ -16,6 +16,7 @@
   "devDependencies": {
     "babel-cli": "6.26.0",
     "babel-plugin-transform-runtime": "6.23.0",
-    "babel-preset-env": "1.6.1"
+    "babel-preset-env": "1.6.1",
+    "rimraf": "2.6.2"
   }
 }
